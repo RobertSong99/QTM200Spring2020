@@ -1,0 +1,146 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 1}
+\date{Due: January 27, 2020}
+\author{QTM 200: Applied Regression Analysis}
+
+\begin{document}
+	\maketitle
+	
+	\section*{Instructions}
+	\begin{itemize}
+		\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
+		\item Your homework should be submitted electronically on the course GitHub page in \texttt{.pdf} form.
+		\item This problem set is due at the beginning of class on Wednesday, January 22, 2020. No late assignments will be accepted.
+		\item Total available points for this homework is 100.
+	\end{itemize}
+	
+	\vspace{1cm}
+	\section*{Question 1 (25 points)}
+
+A private school counselor was curious about the average of IQ of the students in her school and took a random sample of 25 students' IQ scores. The following is the data set:
+\vspace{.5cm}
+
+\lstinputlisting[language=R, firstline=40, lastline=50]{Problem Set Answers.R}  
+
+\vspace{.5cm}
+
+\noindent Find a 90\% confidence interval for the student IQ in the school assuming the population of IQ from which our random sample has been selected is normally distributed. 
+The average student IQ scores is between 93.96 and 102.92 90 percent of the time
+In other words, we are 90 percent confident that the average student IQ score would be between 93.96 and 102.92.
+\vspace{1cm}
+\section*{Question 2 (25 points)}
+A private school counselor was curious  whether  the average of IQ of the students in her school is higher than the average IQ score 100 among all the schools in the country. She took a random sample of 25 students' IQ scores. The following is the data set:
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=56, lastline=59]{{Problem Set Answers.R}  
+\vspace{.5cm}
+
+\noindent Conduct a test with 0.05 significance level assuming the population of IQ from which our random sample has been selected is normally distributed. 
+ We fail to reject the null hypothesis due to a p-value of .7215, and we do not suggest that the average IQ scores is not higher  than the average IQ 100 score.  
+\vspace{1cm}
+	\section*{Question 3 (50 points)}
+Assume $y$ is variable with values 1,2,3,4 standing for ``Freshman", ``Sophomore", ``Junior", and ``Senior", convert $y$ from numbers to characters in \texttt{R}:
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=52, lastline=52]{{Problem Set Answers.R}  
+\vspace{.5cm}
+
+\noindent Researchers are curious about what affects the education expenditure on public education. The following is availabe variables in a data set about the education expenditure. \\
+\vspace{.5cm}
+
+
+\begin{tabular}{r|l}
+	\texttt{State} &\emph{50 states in US} \\
+	\texttt{Y} & \emph{per capita expenditure on public education}\\
+	\texttt{X1} &\emph{per capita personal income} \\
+	\texttt{X2} &  \emph{Number of residents per thousand under 18 years of age}\\
+	\texttt{X3} &  \emph{Number of people per thousand residing in urban areas} \\
+	\texttt{Region} &  \emph{1=Northeast, 2= North Central, 3= South, 4=West} \\
+\end{tabular}
+
+\vspace{.5cm}
+\noindent Explore the \texttt{expenditure} data set and import data into \texttt{R}.
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=54, lastline=54]{PS1.R}  
+\vspace{.5cm}
+\begin{itemize}
+
+\item
+Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3}? What are the correlations among them? Describe the graph and the relationships among them.
+\vspace{.5cm}
+Depending on the relationship, there are many different trends.
+As per capita expenditure on public education increases, so does the relationship of per capita personal income. This is illustrated by the positive relationship drawn by the trendline. The relationship could be deemed correlational because having more people with more money, leads to more money going back into the system through taxes for example, to be spent on public education. Though one must note, ss per capita expenditure on public education passes approximately 100, the relationship becomes more neutral.
+As per capita personal income increases, the number of residents per thousand under 18 years of age seem to decrease illustrated by the negative relationship indicated by the trendline. This makes sense, as one is more likely to earn more money later on in their life due to amass amounts of variables such as more educational experience, leading to higher paying jobs. 
+As per capita personal income increases, there is a general positive trend of the number of people per thousand residing in urban areas. This could be due to the fact that as personal income increases, one can afford to live in presumably better located residencies in urban areas, closer to work. That relationship because to decrease with the few observations around 2500 on 'X1' possibly because those who gain more money can afford even more luxurious locations outside of the urban areas. 
+
+\item
+Please plot the relationship between \emph{Y} and \emph{Region}? On average, which region does have the highest per capita expenditure on public education?
+\vspace{.5cm}
+
+For each region, there are differences between the per capita expenditure on public education as indicated by the spread within the graph. On average, the South (Region 3), has the lowest expenditure; whereas the West (Region 4) has the highest expenditure on public education. The North Central region (Region 2) slightly edges out the Northeast (Region 1), but both exist in between the South and West's expenditures
+
+\item
+Please plot the relationship between \emph{Y} and \emph{X1}? Describe this graph and the relationship. Reproduce the above graph including one more variable \emph{Region} and display different regions with different types of symbols and colors.
+Even when distributing the data by region (as indicated by the different shapes), there is a general positive trend for an increase in per capita expenditure on public education and per capita personal income. This arguments makes sense due to the fact that having more money held by people allows them to give back more money to fund public education through taxes, or even other means.
+\end{itemize}
+
+\end{document}
