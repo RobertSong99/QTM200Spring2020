@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.28)  9 FEB 2020 23:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.28)  9 FEB 2020 15:45
 entering extended mode
-**"./Latex File Solutions.tex"
-("Latex File Solutions.tex"
+**./PS01_answerKey.tex
+(PS01_answerKey.tex
 LaTeX2e <2019-10-01> patch level 3
 ("C:\Users\Robert\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
@@ -233,10 +233,10 @@ l.5 \usepackage
  
 Here is how much of TeX's memory you used:
  1446 strings out of 492482
- 18816 string characters out of 3121122
+ 18774 string characters out of 3121122
  77395 words of memory out of 3000000
  5850 multiletter control sequences out of 15000+200000
  3938 words of font info for 15 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,0n,23p,220b,36s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,0n,23p,212b,36s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!
