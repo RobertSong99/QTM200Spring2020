@@ -85,10 +85,35 @@
 \noindent We are interested in knowing how the difference in campaign spending between incumbent and challenger affects the incumbent's vote share. 
 	\begin{enumerate}
 		\item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{difflog}.	\vspace{5cm}
-		
-		\item Make a scatterplot of the two variables and add the regression line. 	\vspace{7cm}
-		\item Save the residuals of the model in a separate object.	\vspace{7cm}
+			\lstinputlisting[language=R, firstline=12, lastline=19]{PS3_RCode_Answers.R} 
+			
+			\begin{itemize}
+		\item Make a scatterplot of the two variables and add the regression line. 	
+
+			\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\includegraphics[width=.75\textwidth]{plot_Q1_2.pdf}\\
+			\end{figure}
+			\end{itemize}
+
+	\begin{itemize}
+		\item Save the residuals of the model in a separate object.	
+
+			\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\label{fig:plot_Q1_1}
+			\includegraphics[width=.75\textwidth]{plot_Q1_1.pdf}\\
+			\end{figure}	
+		\end{itemize}]
+
+	\newpage
 		\item Write the prediction equation.
+		\vspace{.15cm}
+		\lstinputlisting[language=R, firstline=42, lastline=43]{PS3_RCode_Answers.R}
+voteshare = .579 + .04(difflog) with p-value almost being 0 at 2.2 e-16, meaning our results are significant. For every 1 change in difflog, the difference in campaign spending between incumbent and challenger, there is a .04 increase in voteshare, or specifically the incumbent's vote share.
+\vspace{.15cm}
 	\end{enumerate}
 	
 \newpage
@@ -96,10 +121,31 @@
 \section*{Question 2 (20 points)}
 \noindent We are interested in knowing how the difference between incumbent and challenger's spending and the vote share of the presidential candidate of the incumbent's party are related.	\vspace{.25cm}
 	\begin{enumerate}
-		\item Run a regression where the outcome variable is \texttt{presvote} and the explanatory variable is \texttt{difflog}.	\vspace{5cm}
-		\item Make a scatterplot of the two variables and add the regression line. 	\vspace{5cm}
-		\item Save the residuals of the model in a separate object.	\vspace{5cm}
+		\item Run a regression where the outcome variable is \texttt{presvote} and the explanatory variable is \texttt{difflog}.
+		\lstinputlisting[language=R, firstline=49, lastline=59]{PS3_RCode_Answers.R}
+		
+		\begin{itemize}
+		\item Make a scatterplot of the two variables and add the regression line. 
+			\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\includegraphics[width=.75\textwidth]{plot_Q2_2.pdf}\\
+		\end{figure}
+\end{itemize}
+\newpage
+\begin{itemize}
+		\item Save the residuals of the model in a separate object
+			\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\includegraphics[width=.75\textwidth]{plot_Q2_1.pdf}\\
+		\end{figure}
+\end{itemize}
+\newpage
 		\item Write the prediction equation.
+		\lstinputlisting[language=R, firstline=78, lastline=79]{PS3_RCode_Answers.R}
+Prevote = .508 + .02(difflog) with p-value almost being 0 at 2.2 e-16, meaning our results are significant. For every 1 change in difflog, or the difference between incumbent and challenger’s spending, there is a .02 increase in presvote, the vote share of the presidential candidate of the incumbent’s party.
+		
 	\end{enumerate}
 	
 	\newpage	
@@ -109,10 +155,26 @@
 	\vspace{.25cm}
 	\begin{enumerate}
 		\item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{presvote}.
-			\vspace{5cm}
+	\lstinputlisting[language=R, firstline=84, lastline=94]{PS3_RCode_Answers.R}
+	
 		\item Make a scatterplot of the two variables and add the regression line. 
-			\vspace{5cm}
+		
+			\begin{figure}[h!]\centering
+					\caption{\footnotesize
+					}\vspace{-1cm}
+					\includegraphics[width=.75\textwidth]{plot_Q3_2.pdf}\\
+			\end{figure}
+			\begin{figure}[h!]\centering
+				\caption{\footnotesize
+				}\vspace{-1cm}
+				\includegraphics[width=.75\textwidth]{plot_Q3_1.pdf}\\
+		\end{figure}
+	
+\newpage
 		\item Write the prediction equation.
+			\lstinputlisting[language=R, firstline=112, lastline=113]{PS3_RCode_Answers.R}
+Voteshare = .441 + .388(presvote), with a p-value almost at 0 again, meaning our results are significant. For every 1 change in presvote, the vote share of the presidential candidate of the incumbent’s party , there is a .388 increase in voteshare, or the the incumbent’s vote share.
+			
 	\end{enumerate}
 	
 
@@ -120,9 +182,20 @@
 \section*{Question 4 (20 points)}
 \noindent The residuals from part (a) tell us how much of the variation in \texttt{voteshare} is $not$ explained by the difference in spending between incumbent and challenger. The residuals in part (b) tell us how much of the variation in \texttt{presvote} is $not$ explained by the difference in spending between incumbent and challenger in the district.
 	\begin{enumerate}
-		\item Run a regression where the outcome variable is the residuals from Question 1 and the explanatory variable is the residuals from Question 2.	\vspace{6cm}
-		\item Make a scatterplot of the two residuals and add the regression line. 	\vspace{6cm}
+		\item Run a regression where the outcome variable is the residuals from Question 1 and the explanatory variable is the residuals from Question 2.
+			\lstinputlisting[language=R, firstline=118, lastline=118]{PS3_RCode_Answers.R}
+			\vspace{5cm}
+		\item Make a scatterplot of the two residuals and add the regression line. 
+		\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\includegraphics[width=.75\textwidth]{plot_Q4.pdf}\\
+		\end{figure}
+	
 		\item Write the prediction equation.
+		\lstinputlisting[language=R, firstline=120, lastline=120]{PS3_RCode_Answers.R}
+The residuals from voteshare = 1.748 + -3.082e-01(presvote residual). The p-value is almost 0 at less than 2e-16, meaning our data is significant, and that we can reject that null - these two residuals create variant results
+	
 	\end{enumerate}
 	
 	\newpage	
@@ -130,9 +203,19 @@
 \section*{Question 5 (20 points)}
 \noindent What if the incumbent's vote share is affected by both the president's popularity and the difference in spending between incumbent and challenger? 
 	\begin{enumerate}
-		\item Run a regression where the outcome variable is the incumbent's \texttt{voteshare} and the explanatory variables are \texttt{difflog} and \texttt{presvote}.	\vspace{5cm}
-		\item Write the prediction equation.	\vspace{5cm}
-		\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?	\vspace{5cm}
+		\item Run a regression where the outcome variable is the incumbent's \texttt{voteshare} and the explanatory variables are \texttt{difflog} and \texttt{presvote}.
+		\begin{figure}[h!]\centering
+			\caption{\footnotesize
+			}\vspace{-1cm}
+			\includegraphics[width=.75\textwidth]{plot_Q5.pdf}\\
+		\end{figure}
+	
+		\item Write the prediction equation.
+		\lstinputlisting[language=R, firstline=132, lastline=136]{PS3_RCode_Answers.R}
+		
+		\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?	
+		\vspace{5cm}
+Reflecting based on the previous question being regression variables, unlike this question.
 	%	\item Reflect on your finding. Don't write anything. Just think about it.
 	\end{enumerate}
 
