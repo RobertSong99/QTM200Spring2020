@@ -59,11 +59,11 @@ rownames(impact_se) <- c("Precinct assigned lawn signs (n=30)", "Precinct adjace
 impact_se #Creation of Matrix
 
 xbar = .042 # sample mean 
-mu0 = .302 # hypothesized value 
+mu0 = 0 # hypothesized value of no change
 #std = se * sqrt(n)
 sigma = .016*(sqrt(30)) #standard error converted to standard deviation = .088
 n = 131 # sample size 
-z = (xbar-mu0)/(sigma/sqrt(n)) #-16.25 is the z score
+z = (xbar-mu0)/(sigma/sqrt(n)) #5.49 is the z score
 
 alpha = .05 
 z.half.alpha = qnorm(1-alpha/2) 
@@ -72,10 +72,10 @@ c(-z.half.alpha, z.half.alpha) #from -1.96 to 1.96 for 95% CI
 
 ### Part B ###
 xbar2 = .042 # sample mean 
-mu02 = .302 # hypothesized value 
+mu02 = 0 # hypothesized valueof no change
 sigma2 = .013*(sqrt(76)) #standard error converted to standard deviation = 113
 n2 = 131 # sample size 
-z2 = (xbar2-mu02)/(sigma2/sqrt(n2)) #-20 is the z score
+z2 = (xbar2-mu02)/(sigma2/sqrt(n2)) #4.24 is the z score
 
 alpha2 = .05 
 z.half.alpha2 = qnorm(1-alpha2/2) 
