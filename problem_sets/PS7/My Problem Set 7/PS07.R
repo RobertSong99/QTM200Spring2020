@@ -27,17 +27,10 @@ pkgTest <- function(pkg){
 # ex: stringr
 # lapply(c("stringr"),  pkgTest)
 
-lapply(c("sjPlot", "googleVis"),  pkgTest)
+lapply(c(),  pkgTest)
 
 # set working directory
 setwd("~/Documents/GitHub/QTM200Spring2020/problem_sets/PS7")
-
-
-
-library("lme4")
-library("ggplot2")
-library("googleVis")
-library("sjPlot")
 
 #####################
 # Problem 1
@@ -47,7 +40,7 @@ library("sjPlot")
 mexico_elections <- read.csv("MexicoMuniData.csv", stringsAsFactors = F, header=T)
 
 #####################
-# Problem 1
+# Problem 2
 #####################
 
 sleepstudy <- sleepstudy
