@@ -109,7 +109,7 @@
 		Fit an additive model. Provide the summary output, the global null hypothesis, and $p$-value. Please describe the results and provide a conclusion.
 		
 \vspace{.5cm}
-\lstinputlisting[language=R, firstline=5, lastline=12]{PS6_Rcode.R}  
+\lstinputlisting[language=R, firstline=5, lastline=13]{PS6_Rcode.R}  
 \vspace{.5cm}
 
 The obtained p-value is 2e-16, meaning it is statistically significant. The estimates for the intercept, 'sex' variable, and 'fat' variable are -.13, .19, and 0.008. We see that at a baseline of 0, meaning the individual is female and also 0 grams of fat consumed per day, they would not have high cholesterol (arguably a negative value of cholesterol measurement). However, as we increase sex (or go towards male which is sex=1), the estimate for cholesterol category goes up .18. Furthermore, if we increase 1 gram of fat intake per day, there is an increase of .008 towards the cholesterol category.  
@@ -130,7 +130,7 @@ For men however, you must add 0.19 in addition to the .008 for 1 gram per day in
 		What is the estimated probability of a woman with a fat intake of 100 grams per day being in the high cholesterol group? 
 		
 		\vspace{.5cm}
-		\lstinputlisting[language=R, firstline=14, lastline=16]{PS6_Rcode.R}  
+		\lstinputlisting[language=R, firstline=14, lastline=17]{PS6_Rcode.R}  
 		\vspace{.5cm}
 		
 \begin{equation}
@@ -140,11 +140,9 @@ Estimated Probability = -0.013 + 0.189(sex) + 0.008(fat)
 Estimated Probability = 0.6943003	
 		\item
 		Would the answers to 2a and 2b potentially change if we included the interaction term in this model? Why? 
-		\begin{itemize}
-			\item Perform a test to see if including an interaction is appropriate.
-		\end{itemize}
-%		\item
-%		If you consider all people who have a given fat intake, how does changing from being a female to a male change the odds on being in the high cholesterol group? (For additive model)
+		
+	There would potentially be a change due to the interaction between female and male odds of the high cholesterol group. We see in the initial data in 1 that depending on if they have high cholesterol or does not with the variable cholCat, there is a significant change. 
+
 	
 		
 	\end{enumerate}
@@ -180,7 +178,7 @@ Estimated Probability = 0.6943003
 	\item Construct and interpret an unordered multinomial logit with \texttt{GDPWdiff} as the output and "no change" as the reference category, including the estimated cutoff points and coefficients.
 	
 	\vspace{.5cm}
-	\lstinputlisting[language=R, firstline=18, lastline=25]{PS6_Rcode.R}  
+	\lstinputlisting[language=R, firstline=18, lastline=26]{PS6_Rcode.R}  
 	\vspace{.5cm}
 	
 Keeping all variables constant, when looking at REG, that a one unit increase in REG (which at REG=1, it is categorized as a Democracy) can lead to a GDPWdiff of 1.379 in the negative category. With that in mind, when compared to the middle range of "no change" ([1.379+1.769]/2) that is 1.574, REG negative is lower by .195. As for an increase of one unit in REG can lead to a GDPWdiff of 1.769 in the positive category. That is the GDPWdiff can go as change as high as 1.769 when increasing REG by one unit (or changing to a Democracy according to the variable outputs). 
@@ -190,7 +188,7 @@ Interestingly, OIL has flipped increments, as an increase in 1 unit is a lower b
 	\item Construct and interpret an ordered multinomial logit with \texttt{GDPWdiff} as the outcome variable, including the estimated cutoff points and coefficients.
 	
 	\vspace{.5cm}
-	\lstinputlisting[language=R, firstline=27, lastline=31]{PS6_Rcode.R}  
+	\lstinputlisting[language=R, firstline=27, lastline=32]{PS6_Rcode.R}  
 	\vspace{.5cm}
 	
 The output illustrates that based on REG that a one unit increase leads to .398 increase in GDPWdiff. Based on OIL however, a one unit increase leads to a (-)0.199 decrease in GDPWdiff. Those coefficients do not change in relation to the changes in GDPWdiff range of negative to no change, where it is -0.731, or no change to positive where it is -0.710.  	

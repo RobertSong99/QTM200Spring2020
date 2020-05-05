@@ -1,7 +1,7 @@
 setwd("~/GitHub/QTM200Spring2020/problem_sets/PS6/My Problem Set 6")
+cholesterol <- read.csv("~/GitHub/QTM200Spring2020/problem_sets/PS6/cholesterol.csv")
 cholesterol
 library(ggplot2)
-
 ###Part 1 Question 1###
 #Part A#
 

@@ -1,0 +1,154 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 7}
+\date{Due: May 1, 2020}
+\author{QTM 200: Applied Regression Analysis}
+
+\begin{document}
+	\maketitle
+	
+	\section*{Instructions}
+	\begin{itemize}
+		\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
+		\item Your homework should be submitted electronically on the course GitHub page in \texttt{.pdf} form.
+		\item This problem set is due before midnight on Friday, May 1, 2020. No late assignments will be accepted.
+		\item Total available points for this homework is 100.
+	\end{itemize}
+	
+	\vspace{.5cm}
+
+\section*{Question 1 (50 points): Political Science}	
+\noindent Consider the data set \texttt{MexicoMuniData.csv}, which includes municipal-level information from Mexico. The outcome of interest is the number of times the winning PAN presidential candidate in 2006 (\texttt{PAN.visits.06}) visited a district leading up to the 2009 federal elections, which is a count. Our main predictor of interest is whether the district was highly contested, or whether it was not (the PAN or their opponents have electoral security) in the previous federal elections during 2000 (\texttt{competitive.district}), which is binary (1=close/swing district, 0="safe seat"). We also include \texttt{marginality.06} (a measure of poverty) and \texttt{PAN.governor.06} (a dummy for whether the state has a PAN-affiliated governor) as additional control variables. 
+
+\begin{enumerate}
+	\item [(a)]
+	Run a Poisson regression because the outcome is a count variable. Is there evidence that PAN presidential candidates visit swing districts more? Provide a test statistic and p-value.
+	\newpage
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=5, lastline=10]{PSet7_Rcode.R}  
+\vspace{.5cm}
+The intercept is 0.101 where the competitive district slope value is -.048. The p-value for this test is also significant at 7.98e-08. Due to the fact that the slope is negative, there seems to be the case that candidates visit the swing districts less than they do when they have a safe seat in the district.
+
+	\item [(b)]
+	Interpret the \texttt{marginality.06} and \texttt{PAN.governor.06} coefficients.
+Both the PAN.governor.06 and marginality.06 have negative values, illustrating the negative slope or effect on the whole data. As marginality illustrates a measure of poverty, the more a district is in poverty, or mariginality = 1, then the candidate is less likely to go visit than if they were less impoverished. Similarly, if a district already had a PAN-affiliated governor, PAN.governor = 1, then the candidate would also visit the district less, most likely do to the security of the vote from the same PAN affiliation. 	
+	
+	
+	\item [(c)]
+	Provide the estimated mean number of visits from the winning PAN presidential candidate for a hypothetical district that was competitive (\texttt{competitive.district}=1), had an average poverty level (\texttt{marginality.06} = 0), and a PAN governor (\texttt{PAN.governor.06}=1).
+
+
+\begin{equation}
+Estimated Visits = 0.10076 - 0.04827(competitive.district)
+\end{equation}
+
+\begin{equation}
+- 0.03918(PAN.governor.06) - 0.12046(marginality.06)
+\end{equation}
+
+Estimated visits in those circumstances would be = 	0.01331 through that equation. Could be translated into a percentage like the rest of the dataset. 
+
+
+\end{enumerate}
+	
+
+\section*{Question 2 (50 points): Biology}
+\noindent We'll be using data from a longitudinal sleep study of under 20 undergraduate students ($n$=18), which took place over the course of 10 days to see if sleep deprivation has any effect on participants' reaction time. Load the data through the \texttt{lmer} package.
+
+\begin{enumerate}
+	\item
+	Create a "pooled" linear model where you regress \texttt{Days} on the outcome \texttt{Reaction}. Make sure to run regression diagnostics to check if the variance around the regression line is equal for every year.
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=15, lastline=26]{PSet7_Rcode.R}  
+\vspace{.5cm}
+	
+	\item Fit an "un-pooled" regression model with varying intercepts for patient (include an additive factor for patient) and save the fitted values.
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=28, lastline=31]{PSet7_Rcode.R}  
+\vspace{.5cm}
+	
+	\item Fit a "un-pooled" regression model with varying slopes of time (days) for patients (include only the interaction \texttt{Days:Subject}) and save the fitted values.
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=33, lastline=36]{PSet7_Rcode.R}  
+\vspace{.5cm}
+	
+	\item Fit an "un-pooled" regression model with varying intercepts for patients with varying slopes of time (days) by patient (include the interaction and constituent terms of \texttt{Days} and \texttt{Subject}, \texttt{Days + Subject + Days:Subject}) and save the fitted values.
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=38, lastline=40]{PSet7_Rcode.R}  
+\vspace{.5cm}
+	
+	\item Fit a "semi-pooled" multi-level model with varying-intercept for subject and varying-slope of day by subject. Is it worthwhile for us to run a multi-level model with varying effects of time by subject? Why? Compare your model from part 5 to the other completely "pooled" or "un-pooled models".
+	
+\vspace{.5cm}
+\lstinputlisting[language=R, firstline=42, lastline=69]{PSet7_Rcode.R}  
+\vspace{.5cm}
+
+It definitely could be worth looking at it, because each variable seemingly interacts differently when applied in different situations. It's difficult to tell based on each subject exactly what changes, but the variations do exist especially visible through the slopes of the graphs and their interactions. 
+\end{enumerate}
+
+\end{document}
